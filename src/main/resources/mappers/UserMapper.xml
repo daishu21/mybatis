@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--接口代理-->
+<mapper namespace="com.xr.dao.UserMapper">
+    <!--创建一个User的结果映射-->
+    <resultMap id="resultUser" type="User">
+        <id property="uid" column="USER_ID"></id>
+        <result property="userName" column="USER_NAME"></result>
+        <result property="password" column="PASSWORD"></result>
+    </resultMap>
+
+
+    <!--对User实体类（数据库表）的CRUD操作-->
+    <!--面向接口开发-->
+    <select id="getUsers" resultMap="resultUser">
+        select * from t_user
+    </select>
+
+
+</mapper>

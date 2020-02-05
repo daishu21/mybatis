@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入properties文件-->
+    <properties resource="db.properties"></properties>
+
+    <!--settings-->
+        <!--只能解决部门命名的问题-->
+        <!--setting name="mapUnderscoreToCamelCase" value="true" /-->
+    <!--/settings-->
+
+    <!--设置别名-->
+    <typeAliases>
+        <!--为xom.xr.model包下所有的类，设置别名，它们的别名分别是首字母大小写的类名，比如：User 或 user-->
+        <package name="com.xr.model"></package>
+    </typeAliases>
+
+
+
+    <!--配置环境 -->
+    <environments default="development">
+        <!--配置开发环境-->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driverClass}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载mapper映射文件-->
+    <mappers>
+        <mapper resource="mappers/UserMapper.xml"></mapper>
+    </mappers>
+</configuration>
